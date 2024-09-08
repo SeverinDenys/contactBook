@@ -1,0 +1,11 @@
+.contactInfo {
+  margin-top: 7rem;
+  background: $main-color;
+  font-size: 2rem;
+  padding: 1rem 0;
+  padding-left: 1rem;
+
+  & * {
+    margin: 1rem 0;
+  }
+}

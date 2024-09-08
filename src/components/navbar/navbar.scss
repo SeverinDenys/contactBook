@@ -1,0 +1,30 @@
+.Navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 5rem;
+  background: $nav-bg-color;
+
+  &__button {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+
+    &--cancel {
+      color: $btn-cancel;
+      cursor: pointer;
+    }
+
+    &--done {
+      color: $btn-done;
+      // cursor: not-allowed;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    color: $main-color;
+  }
+}

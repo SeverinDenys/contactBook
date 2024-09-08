@@ -1,0 +1,39 @@
+.inputInfoHolder {
+  .inputInfo {
+    background: $input-bg;
+    border: none;
+    font-size: 2rem;
+    width: 100%;
+
+    padding-top: 1rem; // Sets padding on all sides
+    padding-bottom: 1rem; // Sets padding on all sides
+    padding-left: 2rem;
+    color: $input-text;
+
+    &--phone {
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+    }
+
+    &:nth-of-type(4) {
+      &::placeholder {
+        color: $input-text; // Change placeholder color
+      }
+    }
+
+    &:nth-of-type(5) {
+      &::placeholder {
+        color: $input-text; // Change placeholder color
+      }
+    }
+
+    &::placeholder {
+      margin-left: 1rem;
+      color: $input-text-color;
+    }
+  }
+}
+
+.test {
+  color: $input-text;
+}
