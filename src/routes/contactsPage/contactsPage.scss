@@ -1,0 +1,30 @@
+.contactsPage {
+  font-size: 2rem;
+  color: $main-color;
+  margin-left: 2rem;
+  font-family: Roboto, Arial, sans-serif;
+
+  .contactsPageBtnHolder {
+    display: flex;
+    justify-content: end;
+    margin-right: 2rem;
+
+    &__button {
+      border: none;
+      background: none;
+      color: $btn-add;
+      font-size: 4.5rem;
+    }
+  }
+
+  .contactsForm {
+    &__searchInput {
+      background: $input-bg;
+      border: none;
+      font-size: 2rem;
+      margin-top: 2rem;
+      padding: 1rem 2rem 1rem 1rem;
+      border-radius: 7px;
+    }
+  }
+}
