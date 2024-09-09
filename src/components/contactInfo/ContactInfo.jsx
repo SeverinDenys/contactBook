@@ -4,7 +4,7 @@ export default function ContactInfo({ inputsValueData }) {
   return (
     <div className=" contactInfo">
       <h2 className="contactInfo__Title">
-        {inputsValueData.firstName}
+        {inputsValueData.firstName}&nbsp;
         {inputsValueData.lastName}
       </h2>
       <p>{inputsValueData.company}</p>

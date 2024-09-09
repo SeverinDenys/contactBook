@@ -3,17 +3,32 @@ import Navbar from "./components/Navbar/Navbar";
 import ContactInfo from "./components/contactInfo/ContactInfo";
 import { useState } from "react";
 
+function uuidv4() {
+  return "10000000-1000-4000-8000-100000000000".replace(
+    /[018]/g,
+    (c) =>
+      (
+        +c ^
+        (crypto.getRandomValues(new Uint8Array(1))[0] &
+          (15 >> (+c / 4)))
+      ).toString(16)
+  );
+}
+
+const defaultInputValues = {
+  firstName: "",
+  lastName: "",
+  company: "",
+  phone: "",
+  email: "",
+};
 function App() {
-  const [inputsValueData, setInputsValueData] = useState({
-    firstName: "",
-    lastName: "",
-    company: "",
-    phone: "",
-    email: "",
-  });
+  const [inputsValueData, setInputsValueData] = useState(
+    defaultInputValues
+  );
 
+  const [contacts, setContacts] = useState([]);
  
-
   // update specific field in the object based on input name
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,14 +38,35 @@ function App() {
     }));
   };
 
+  const onContactSave = () => {
+    const newObject = {
+      ...inputsValueData,
+      id: uuidv4(),
+    };
+    setContacts([newObject, ...contacts]);
+    setInputsValueData(defaultInputValues);
+  };
+
+  const onContactCancel = () => {
+    setInputsValueData(defaultInputValues);
+  };
+
   return (
     <>
-      <Navbar inputsValueData={inputsValueData} />
+      <Navbar
+        onContactSave={onContactSave}
+        onContactCancel={onContactCancel}
+      />
       <Info
         inputsValueData={inputsValueData}
         handleInputChange={handleInputChange}
       />
-      <ContactInfo inputsValueData={inputsValueData} />
+
+      {contacts.map((item) => {
+        return (
+          <ContactInfo inputsValueData={item} key={item.id} />
+        );
+      })}
     </>
   );
 }
