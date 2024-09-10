@@ -47,6 +47,24 @@ export default function Info({ inputsValueData, handleInputChange }) {
           value={inputsValueData.email}
           onChange={handleInputChange}
         />
+
+        <input
+          name="address"
+          type="text"
+          className="inputInfo inputInfo--address"
+          placeholder="add address"
+          value={inputsValueData.address}
+          onChange={handleInputChange}
+        />
+
+        <input
+          name="birthday"
+          type="text"
+          className="inputInfo inputInfo--birthday"
+          placeholder="add birthday"
+          value={inputsValueData.birthday}
+          onChange={handleInputChange}
+        />
       </div>
 
       {/* <p className="test">input value: {inputValue}</p> just a test*/}

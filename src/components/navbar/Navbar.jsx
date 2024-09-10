@@ -2,25 +2,30 @@
 
 import { Link } from "react-router-dom";
 
-export default function Navbar({ onContactSave, onContactCancel }) {
+export default function Navbar({
+  onContactSave,
+  onContactCancel,
+  contacts,
+}) {
   return (
     <>
       <nav className="Navbar">
-        <button
-          className=" Navbar__button Navbar__button--cancel"
-          onClick={onContactCancel}
-        >
-          Cancel
-        </button>
-        <h1 className="Navbar__title">New Contact</h1>
-        <Link to="/contactsPage">
+        <Link to="/contactsPage" state={{ contacts }}>
           <button
-            className="Navbar__button Navbar__button--done"
-            onClick={onContactSave}
+            className=" Navbar__button Navbar__button--cancel"
+            onClick={onContactCancel}
           >
-            Done
+            Cancel
           </button>
         </Link>
+        <h1 className="Navbar__title">New Contact</h1>
+
+        <button
+          className="Navbar__button Navbar__button--done"
+          onClick={onContactSave}
+        >
+          Done
+        </button>
       </nav>
     </>
   );

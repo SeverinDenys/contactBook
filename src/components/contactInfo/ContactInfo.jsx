@@ -10,6 +10,12 @@ export default function ContactInfo({ inputsValueData }) {
       <p>{inputsValueData.company}</p>
       <p className="contactInfo__Phone">{inputsValueData.phone}</p>
       <p className="contactInfo__Email">{inputsValueData.email}</p>
+      <p className="contactInfo__Address">
+        {inputsValueData.address}
+      </p>
+      <p className="contactInfo__Birthday">
+        {inputsValueData.birthday}
+      </p>
     </div>
   );
 }

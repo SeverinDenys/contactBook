@@ -1,6 +1,5 @@
 import Info from "./components/Info/Info";
 import Navbar from "./components/Navbar/Navbar";
-import ContactInfo from "./components/contactInfo/ContactInfo";
 import { useState } from "react";
 
 function uuidv4() {
@@ -21,6 +20,8 @@ const defaultInputValues = {
   company: "",
   phone: "",
   email: "",
+  address: "",
+  birthday: "",
 };
 function App() {
   const [inputsValueData, setInputsValueData] = useState(
@@ -28,7 +29,7 @@ function App() {
   );
 
   const [contacts, setContacts] = useState([]);
- 
+
   // update specific field in the object based on input name
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -56,17 +57,12 @@ function App() {
       <Navbar
         onContactSave={onContactSave}
         onContactCancel={onContactCancel}
+        contacts={contacts}
       />
       <Info
         inputsValueData={inputsValueData}
         handleInputChange={handleInputChange}
       />
-
-      {contacts.map((item) => {
-        return (
-          <ContactInfo inputsValueData={item} key={item.id} />
-        );
-      })}
     </>
   );
 }
