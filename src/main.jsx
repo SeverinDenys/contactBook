@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import ContactsPage from "./routes/contactsPage/ContactsPage.jsx";
+import ContactPage from "./routes/contactPage/ContactPage.jsx";
 import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
@@ -18,8 +19,14 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/contactsPage",
+    path: "/",
     element: <ContactsPage />,
+    errorElement: <ErrorPage />,
+  },
+
+  {
+    path: "/contactPage",
+    element: <ContactPage />,
     errorElement: <ErrorPage />,
   },
 ]);

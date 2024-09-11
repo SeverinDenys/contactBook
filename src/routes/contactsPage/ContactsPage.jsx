@@ -1,14 +1,19 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ContactInfo from "../../components/contactInfo/ContactInfo";
+import { useNavigate } from "react-router-dom";
 
 export default function ContactsPage() {
-  const location = useLocation();
-  const contacts = location.state.contacts;
+  const navigate = useNavigate();
+  const contacts = JSON.parse(localStorage.getItem("contacts")) || []; // we need to take the values from localStorage
+
+  const redirectToContactPage = () => {
+    navigate("/contactPage/");
+  };
   return (
     <>
       <div className="contactsPage">
         <div className="contactsPageBtnHolder">
-          <Link to="/contactBook">
+          <Link to="/contactBook/">
             <button className="contactsPageBtnHolder__button">
               +
             </button>
@@ -25,7 +30,11 @@ export default function ContactsPage() {
           />
         </form>
         {contacts.map((item) => (
-          <ContactInfo inputsValueData={item} key={item.id} />
+          <ContactInfo
+            onClick={() => redirectToContactPage()}
+            contactName={`${item.firstName} ${item.lastName}`}
+            key={item.id}
+          />
         ))}
       </div>
     </>

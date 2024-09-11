@@ -1,0 +1,38 @@
+.contactPage {
+  color: $main-color;
+  &__title {
+    text-align: center;
+    font-size: 5rem;
+    margin-top: 7rem;
+  }
+
+  &
+    *:not(&__title):not(.contactPageBtnHolder):not(
+      .contactPageBtnHolder__button
+    ):not(.contactPageHolder) {
+    background: $nav-bg-color;
+    margin: 2.5rem 1rem 0 1rem;
+    padding: 1rem 1rem 1rem 1rem;
+    font-size: 2.5rem;
+    border-radius: 1rem;
+  }
+  .contactPageBtnHolder {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    &__button {
+      border: none;
+      background: $btn-edit;
+      color: $main-color;
+      font-size: 2rem;
+      padding: 3px 7px;
+      border-radius: 2rem;
+      margin-top: 1rem;
+    }
+  }
+  .contactPageHolder {
+    background: $nav-bg-color-light;
+    padding-bottom: 2rem;
+  }
+}

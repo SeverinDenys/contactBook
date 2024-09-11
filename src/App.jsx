@@ -1,7 +1,7 @@
 import Info from "./components/Info/Info";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import { useState } from "react";
-
+import {  useNavigate } from "react-router-dom";
 function uuidv4() {
   return "10000000-1000-4000-8000-100000000000".replace(
     /[018]/g,
@@ -28,7 +28,7 @@ function App() {
     defaultInputValues
   );
 
-  const [contacts, setContacts] = useState([]);
+  const navigate = useNavigate();
 
   // update specific field in the object based on input name
   const handleInputChange = (e) => {
@@ -44,12 +44,27 @@ function App() {
       ...inputsValueData,
       id: uuidv4(),
     };
-    setContacts([newObject, ...contacts]);
+
+    // 1 go to localstorage and take everything by key=contacts, save it into const contacts
+    const existingContacts =
+      JSON.parse(localStorage.getItem("contacts")) || [];
+    // 2 - reminder. In localStorage everything is stored as strings.
+    // 3 - create a new array with changes
+    //   [newObject, ...contacts] ;
+    const updatedContacts = [newObject, ...existingContacts];
+    // 4 - we save this new array into localstorage back by key = contacts
+    localStorage.setItem("contacts", JSON.stringify(updatedContacts));
+    // 5 - make redirect to the contacts page
+
     setInputsValueData(defaultInputValues);
+    navigate("/");
   };
 
   const onContactCancel = () => {
-    setInputsValueData(defaultInputValues);
+    // setInputsValueData(defaultInputValues);
+    // todo
+    // redirect to the main page
+    navigate("/");
   };
 
   return (
@@ -57,7 +72,6 @@ function App() {
       <Navbar
         onContactSave={onContactSave}
         onContactCancel={onContactCancel}
-        contacts={contacts}
       />
       <Info
         inputsValueData={inputsValueData}
