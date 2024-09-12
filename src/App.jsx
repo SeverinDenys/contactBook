@@ -28,7 +28,7 @@ function App() {
     defaultInputValues
   );
 
-  const navigate = useNavigate();
+ const navigate = useNavigate(); 
 
   // update specific field in the object based on input name
   const handleInputChange = (e) => {
