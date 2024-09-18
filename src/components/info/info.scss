@@ -48,6 +48,14 @@
   }
 }
 
-.test {
-  color: $input-text;
+.deleteContact {
+  display: flex;
+   margin: 4rem auto;
+   font-size: 2rem;
+  background:$main-color;
+  padding: 1rem;
+  border-radius: 1rem;
+  border:none;
+  color: $btn-delete;
+  font-weight: bold;
 }

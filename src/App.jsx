@@ -1,7 +1,7 @@
-import Info from "./components/Info/Info";
+import Info from "./components/info/Info";
 import Navbar from "./components/navbar/Navbar";
 import { useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function uuidv4() {
   return "10000000-1000-4000-8000-100000000000".replace(
     /[018]/g,
@@ -28,7 +28,7 @@ function App() {
     defaultInputValues
   );
 
- const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   // update specific field in the object based on input name
   const handleInputChange = (e) => {
@@ -37,6 +37,38 @@ function App() {
       ...prevInputData,
       [name]: value,
     }));
+  };
+
+  const onDelete = (id) => {
+    const existingContacts =
+      JSON.parse(localStorage.getItem("contacts")) || [];
+    const filteredContacts = existingContacts.filter((item) => {
+      return item.id !== id;
+      // if (item.id !== id) {
+      //   return true;
+      // } else {
+      //   return false;
+      // }
+    });
+    localStorage.setItem(
+      "contacts",
+      JSON.stringify(filteredContacts)
+    );
+    navigate("/");
+  };
+
+  const onEdit = (id) => {
+    const existingContacts =
+      JSON.parse(localStorage.getItem("contacts")) || [];
+    const editedContacts = existingContacts.map((item) => {
+      if (item.id === id) {
+        return inputsValueData;
+      } else {
+        return item;
+      }
+    });
+    localStorage.setItem("contacts", JSON.stringify(editedContacts));
+    navigate("/");
   };
 
   const onContactSave = () => {
@@ -61,9 +93,6 @@ function App() {
   };
 
   const onContactCancel = () => {
-    // setInputsValueData(defaultInputValues);
-    // todo
-    // redirect to the main page
     navigate("/");
   };
 
@@ -72,10 +101,13 @@ function App() {
       <Navbar
         onContactSave={onContactSave}
         onContactCancel={onContactCancel}
+        onEdit={onEdit}
       />
       <Info
         inputsValueData={inputsValueData}
         handleInputChange={handleInputChange}
+        onDelete={onDelete}
+        setInputsValueData={setInputsValueData}
       />
     </>
   );

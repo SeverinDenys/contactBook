@@ -1,6 +1,20 @@
 /* eslint-disable react/prop-types */
+import { useLocation } from "react-router-dom";
 
-export default function Navbar({ onContactSave, onContactCancel }) {
+export default function Navbar({
+  onContactSave,
+  onContactCancel,
+  onEdit,
+}) {
+  const location = useLocation();
+  const { contact } = location.state || {};
+  const onDoneClick = () => {
+    if (contact) {
+      onEdit(contact.id)
+    } else {
+      onContactSave();
+    }
+  };
   return (
     <>
       <nav className="Navbar">
@@ -11,11 +25,15 @@ export default function Navbar({ onContactSave, onContactCancel }) {
           Cancel
         </button>
 
-        <h1 className="Navbar__title">New Contact</h1>
+        {contact ? (
+          <h1 className="Navbar__title">Edit Contact</h1>
+        ) : (
+          <h1 className="Navbar__title">New Contact</h1>
+        )}
 
         <button
           className="Navbar__button Navbar__button--done"
-          onClick={onContactSave}
+          onClick={onDoneClick}
         >
           Done
         </button>

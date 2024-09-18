@@ -13,7 +13,13 @@ import ErrorPage from "./components/ErrorPage";
 
 const router = createBrowserRouter([
   {
-    path: "/contactBook",
+    path: "/contactBook/:id",
+    element: <App />,
+    errorElement: <ErrorPage />,
+  },
+  
+  {
+    path: "/contactBook/",
     element: <App />,
     errorElement: <ErrorPage />,
   },

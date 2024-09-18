@@ -1,6 +1,23 @@
 /* eslint-disable react/prop-types */
 
-export default function Info({ inputsValueData, handleInputChange }) {
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
+export default function Info({
+  inputsValueData,
+  handleInputChange,
+  onDelete,
+  setInputsValueData,
+}) {
+  const location = useLocation();
+  const { contact } = location.state || {};
+
+  useEffect(() => {
+    if (contact) {
+      setInputsValueData(contact);
+    }
+  }, []);
+
   return (
     <>
       <div className="inputInfoHolder">
@@ -66,8 +83,14 @@ export default function Info({ inputsValueData, handleInputChange }) {
           onChange={handleInputChange}
         />
       </div>
-
-      {/* <p className="test">input value: {inputValue}</p> just a test*/}
+      {contact && (
+        <button
+          className="deleteContact"
+          onClick={() => onDelete(contact.id)}
+        >
+          Delete
+        </button>
+      )}
     </>
   );
 }
