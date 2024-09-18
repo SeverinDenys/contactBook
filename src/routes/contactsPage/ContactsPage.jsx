@@ -1,42 +1,42 @@
 import { Link } from "react-router-dom";
 import ContactInfo from "../../components/contactInfo/ContactInfo";
 import { useState } from "react";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 export default function ContactsPage() {
   const contacts = JSON.parse(localStorage.getItem("contacts")) || []; // we need to take the values from localStorage
-  const alphabetArray = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
+  // const alphabetArray = [
+  //   "A",
+  //   "B",
+  //   "C",
+  //   "D",
+  //   "E",
+  //   "F",
+  //   "G",
+  //   "H",
+  //   "I",
+  //   "J",
+  //   "K",
+  //   "L",
+  //   "M",
+  //   "N",
+  //   "O",
+  //   "P",
+  //   "Q",
+  //   "R",
+  //   "S",
+  //   "T",
+  //   "U",
+  //   "V",
+  //   "W",
+  //   "X",
+  //   "Y",
+  //   "Z",
+  // ];
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value);
-    console.log(searchValue);
   };
 
   return (
@@ -62,8 +62,20 @@ export default function ContactsPage() {
           />
         </form>
         {contacts
+          .sort((a, b) => {
+            const firstContactName = a.firstName.toUpperCase();
+            console.log("firstContact", firstContactName);
+            const secondContactName = b.firstName.toUpperCase();
+            console.log("secondContact", secondContactName );
+            if (firstContactName < secondContactName) {
+              return -1; 
+            }
+            if (firstContactName > secondContactName) {
+              return 1;
+            }
+            return 0;
+          })
           .filter((contact) => {
-            console.log("contact", contact.firstName, searchValue);
             if (searchValue === "") {
               return true;
             } else {
@@ -88,13 +100,7 @@ export default function ContactsPage() {
               )
           )}
       </div>
-      <aside className="sidebar">
-        {alphabetArray.map((letter) => (
-          <p key={letter} className="sidebar__letter">
-            {letter}
-          </p>
-        ))}
-      </aside>
+      <Sidebar />
     </>
   );
 }

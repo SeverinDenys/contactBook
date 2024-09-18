@@ -26,6 +26,7 @@
       margin-top: 2rem;
       padding: 1rem 2rem 1rem 1rem;
       border-radius: 7px;
+      color:$main-color;
     }
   }
 }
@@ -38,15 +39,16 @@
   right: 0;
   top: 0;
   bottom: 0;
-  color: $btn-cancel;
   overflow-y: auto;
   justify-content: center;
-
   margin-right: 5px;
-  color: $btn-cancel;
+
   &__letter {
     margin-top: 1rem;
+    background: none;
+    border: none;
     cursor: pointer;
     font-size: 1.1rem;
+    color: $btn-cancel;
   }
 }
