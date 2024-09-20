@@ -39,6 +39,8 @@ function App() {
     }));
   };
 
+
+
   const onDelete = (id) => {
     const existingContacts =
       JSON.parse(localStorage.getItem("contacts")) || [];

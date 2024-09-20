@@ -5,38 +5,29 @@ import Sidebar from "../../components/sidebar/Sidebar";
 
 export default function ContactsPage() {
   const contacts = JSON.parse(localStorage.getItem("contacts")) || []; // we need to take the values from localStorage
-  // const alphabetArray = [
-  //   "A",
-  //   "B",
-  //   "C",
-  //   "D",
-  //   "E",
-  //   "F",
-  //   "G",
-  //   "H",
-  //   "I",
-  //   "J",
-  //   "K",
-  //   "L",
-  //   "M",
-  //   "N",
-  //   "O",
-  //   "P",
-  //   "Q",
-  //   "R",
-  //   "S",
-  //   "T",
-  //   "U",
-  //   "V",
-  //   "W",
-  //   "X",
-  //   "Y",
-  //   "Z",
-  // ];
+
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value);
+  };
+
+  const onLetterSelect = (letter) => {
+    console.log(letter);
+    const headerHight = 52 + 48 + 63;
+    const itemHight = 30 + 58;
+    // find order number 1element that starts with letter
+    const index = contacts.findIndex((contact) =>
+      contact.firstName.startsWith(letter)
+    );
+    if (index === -1) {
+      return;
+    }
+    const totalScroll = headerHight + itemHight * index;
+    console.log(totalScroll);
+    console.log(index);
+
+    window.scroll(0, totalScroll);
   };
 
   return (
@@ -64,11 +55,11 @@ export default function ContactsPage() {
         {contacts
           .sort((a, b) => {
             const firstContactName = a.firstName.toUpperCase();
-            console.log("firstContact", firstContactName);
+
             const secondContactName = b.firstName.toUpperCase();
-            console.log("secondContact", secondContactName );
+
             if (firstContactName < secondContactName) {
-              return -1; 
+              return -1;
             }
             if (firstContactName > secondContactName) {
               return 1;
@@ -100,7 +91,7 @@ export default function ContactsPage() {
               )
           )}
       </div>
-      <Sidebar />
+      <Sidebar onLetterSelect={onLetterSelect} />
     </>
   );
 }
