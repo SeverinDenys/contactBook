@@ -10,4 +10,11 @@
   & * {
     margin: 1rem 0;
   }
+
+  @media (min-width: 768px) {
+    max-width: 50rem;
+    text-align: start;
+    margin: 3rem auto;
+    padding-left: 3rem;
+  }
 }

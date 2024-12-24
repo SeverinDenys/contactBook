@@ -1,12 +1,19 @@
 .inputInfoHolder {
+  @media (min-width: 768px) {
+    width: 80%;
+    margin: 0 auto;
+  }
   .inputInfo {
     background: $input-bg;
     border: none;
     font-size: 2rem;
     width: 100%;
 
-    padding-top: 1rem; // Sets padding on all sides
-    padding-bottom: 1rem; // Sets padding on all sides
+    @media (min-width: 768px) {
+    }
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     padding-left: 2rem;
     color: $input-text;
 
@@ -17,13 +24,13 @@
 
     &:nth-of-type(4) {
       &::placeholder {
-        color: $input-text; // Change placeholder color
+        color: $input-text;
       }
     }
 
     &:nth-of-type(5) {
       &::placeholder {
-        color: $input-text; // Change placeholder color
+        color: $input-text;
       }
     }
 
@@ -31,13 +38,13 @@
       margin-top: 5rem;
       margin-bottom: 5rem;
       &::placeholder {
-        color: $input-text; // Change placeholder color
+        color: $input-text;
       }
     }
 
     &:nth-of-type(7) {
       &::placeholder {
-        color: $input-text; // Change placeholder color
+        color: $input-text;
       }
     }
 
@@ -50,12 +57,12 @@
 
 .deleteContact {
   display: flex;
-   margin: 4rem auto;
-   font-size: 2rem;
-  background:$main-color;
+  margin: 4rem auto;
+  font-size: 2rem;
+  background: $main-color;
   padding: 1rem;
   border-radius: 1rem;
-  border:none;
+  border: none;
   color: $btn-delete;
   font-weight: bold;
 }

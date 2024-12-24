@@ -24,8 +24,7 @@ export default function ContactsPage() {
       return;
     }
     const totalScroll = headerHight + itemHight * index;
-    console.log(totalScroll);
-    console.log(index);
+    
 
     window.scroll(0, totalScroll);
   };

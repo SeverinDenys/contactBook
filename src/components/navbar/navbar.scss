@@ -12,6 +12,10 @@
     background: none;
     font-size: 1.5rem;
 
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+
     &--cancel {
       color: $btn-cancel;
       cursor: pointer;
@@ -26,5 +30,10 @@
   &__title {
     font-size: 2rem;
     color: $main-color;
+
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+
   }
 }
