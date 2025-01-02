@@ -1,8 +1,11 @@
-# React + Vite
+# Contact Book
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A contact management app inspired by the iPhone Contacts feature, built using React and Sass.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Add Contacts:** Add new contacts with name, phone, email, and other details.
+- **Edit and Delete:** Update or remove existing contacts.
+- **Search Functionality:** Quickly search for contacts by name.
+- **Responsive Design:** Optimized for desktop and mobile using Sass.
+
